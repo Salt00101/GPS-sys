@@ -31,7 +31,7 @@ async def on_message(message):
             await client.send_message(message.channel, msg)
             print('Help message sent')
         elif message.content.startswith('>find') or message.content.startswith('>f'):
-            if autenticado:
+            if auth:
                 msg = "**Error:**\n```uwu yeah it didnt work```"
                 name = " ".join(message.content.split()[
                                 1:]).lower().split(",")[0]
