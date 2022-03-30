@@ -14,7 +14,7 @@ auth = False
 
 if api_life360.authenticate():
     circles = api_life360.get_circles()
-    c_id = circles[0]['id']
+    c_id = circles[1]['id']
     circle = api_life360.get_circle(c_id)
     auth = True
 
