@@ -50,6 +50,24 @@ async def on_message(message):
             else:
                 await client.send_message(message.channel, "**Error:**\n```Auth login invalid```")
                 print('Login credentials are invalid')
+                
+        elif message.content.startswith('>battery') or message.content.startswith('>b'):
+            if auth:
+                msg = "**Error:**\n```uwu yeah it didnt work```"
+                name = " ".join(message.content.split()[
+                                1:]).lower().split(",")[0]
+                for m in circle['members']:
+                    if name == m['firstName'].lower():
+                        msg = "**battery of " + m['firstName'] + ": " + m['location']['battery'] + "%"
+                await client.send_message(message.channel, msg)
+                if "Error" not in msg:
+                    print('Individual localization message sent')
+                else:
+                    print(
+                        'Error at localizating circle member, maybe their name is misspelled?')
+            else:
+                await client.send_message(message.channel, "**Error:**\n```Auth login invalid```")
+                print('Login credentials are invalid')
         elif message.content.startswith('>list') or message.content.startswith('>l'):
             if auth:
                 msg = "**list of nerds " + circle['name'] + ":**```"
